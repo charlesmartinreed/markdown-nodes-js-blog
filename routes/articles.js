@@ -14,8 +14,8 @@ router.get("/new", (req, res) => {
 });
 
 // GET -- ARTICLE BY ID
-router.get("/:id", async (req, res) => {
-  const article = await Article.findById(req.params.id);
+router.get("/:slug", async (req, res) => {
+  const article = await Article.findOne({ slug: req.params.slug });
 
   if (article == null) res.redirect("/");
 
@@ -34,7 +34,7 @@ router.post("/", async (req, res) => {
   // save the new article
   try {
     article = await article.save();
-    res.redirect(`/articles/${article.id}`);
+    res.redirect(`/articles/${article.slug}`);
   } catch (error) {
     // return to the article creation page, with the previously entered data added
     res.render("articles/new", { article: article });
