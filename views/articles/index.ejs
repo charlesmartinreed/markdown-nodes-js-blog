@@ -33,11 +33,13 @@
               <a href="articles/<%= article.slug %>" class="btn btn-primary"
                 >Read More</a
               >
+              <a href="articles/edit/<%= article.id %>" class="btn btn-info"
+                >Edit</a
+              >
                   <!-- why not just use a link tag to delete? Google clicks every link when indexing a site, which would delete everything from our DB -->
             <form action="/articles/<%= article.id %>?_method=DELETE" method="POST" class="d-inline">
               <button type="submit" class="btn btn-danger">Delete</button>
             </form>
-
             </div>
           
         
