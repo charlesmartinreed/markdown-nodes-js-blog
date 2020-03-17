@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 const articleRouter = require("./routes/articles");
+const Article = require("./models/article");
 
 // VIEW ENGINE SETUP -- EJS
 app.set("view engine", "ejs");
@@ -9,7 +10,11 @@ app.set("view engine", "ejs");
 app.use("/articles", articleRouter);
 
 app.get("/", (req, res) => {
-  res.render("index");
+  const articles = new Article({
+    title: "Test Article",
+    description: "Test Description"
+  });
+  res.render("index", { articles: articles });
 });
 
 app.listen(5000);
