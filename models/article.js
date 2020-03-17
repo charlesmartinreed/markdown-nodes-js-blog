@@ -10,8 +10,11 @@ const articleSchema = new mongoose.Schema({
     default: Date.now
   },
   description: {
-    type: String,
-    required: true
+    type: String
+  },
+  markdown: {
+      type: String,
+      required: true
   }
 });
 
